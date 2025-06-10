@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+
+    th, td {
+        border-style:solid;
+        border-radius: 10px;
+        border-color: #96D4D4;
+    }
+
+</style>
+
+<body>
+<h1>Danh sach khach hang</h1>
+<p>
+    <a th:href="@{/customers/create}">Then mot khach hang</a>
+</p>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th colspan="2">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="row, rowSate : ${customers}">
+        <td th:text="${row.getId()}"></td>
+        <td th:text="${row.getName()}"></td>
+        <td th:text="${row.getEmail()}"></td>
+        <td th:text="${row.getAddress()}"></td>
+        <td><a th:href="@{/customers/{id}/edit(id=${row.getId()})}">edit</a></td>
+        <td><a th:href="@{/customers/{id}/delete(id=${row.getId()})}">delete</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
